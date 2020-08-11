@@ -1,0 +1,28 @@
+scalar Date
+
+type Sale {
+    id:ID
+    qty:Int
+    status:String
+    date:Date
+    customer:Customer
+    product:Product
+}
+
+input SaleInput {
+    id:ID
+    qty:Int
+    status:String
+    customerId:ID
+    productId:ID
+}
+
+extend type Query {
+    sale(id:ID):Sale
+    sales(page:Int = 0, size:Int = 10):[Sale]
+}
+
+extend type Mutation {
+    saveSale(ssale:SaleInput):Sale
+    deleteSale(id:ID):ID
+}

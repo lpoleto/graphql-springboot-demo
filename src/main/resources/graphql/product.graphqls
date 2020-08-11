@@ -1,0 +1,16 @@
+type Product {
+    id:ID
+    name:String
+    amount:Float
+    usdAmount:String
+}
+
+extend type Query {
+    product(id:ID):Product
+    products:[Product]
+}
+
+extend type Mutation {
+    saveProduct(id:ID, name:String, amount:Float):Product
+    deleteProduct(id:ID):ID
+}
